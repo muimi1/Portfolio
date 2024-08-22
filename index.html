@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typewriter and Slide-in Animation with Redirect</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url('index1.jpg'); /* Path to your background image */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    #typewriter {
+      font-size: 2em;
+      color: white;
+      text-align: center;
+      
+     
+      
+      display: inline-block;
+    }
+
+   /* Slide-in from left */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-in-left {
+  animation: slideInLeft 1s ease-out;
+}
+
+/* Slide-in from right */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-in-right {
+  animation: slideInRight 1s ease-out;
+}
+
+/* Fade-in effect */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-in;
+}
+#zoom-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.5); /* Optional: darken effect */
+  z-index: 9999; /* Ensure it covers everything */
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(1);
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+#zoom-overlay.zoom-in {
+  opacity: 1;
+  transform: scale(3); /* Adjust scale to determine zoom level */
+  transform-origin: 50% 50%; /* Center zoom by default */
+}
+
+
+  </style>
+</head>
+<body>
+  <div id="typewriter"></div>
+
+  <!-- Include the audio element for the typewriting sound -->
+  <div id="zoom-overlay"></div>
+
+
+  <!-- Link to the external JavaScript file -->
+  <script src="index.js"></script>
+</body>
+</html>
